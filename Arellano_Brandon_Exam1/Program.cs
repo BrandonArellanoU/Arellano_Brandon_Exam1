@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Arellano_Brandon_Exam1.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Arellano_Brandon_Exam1Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Arellano_Brandon_Exam1Context") ?? throw new InvalidOperationException("Connection string 'Arellano_Brandon_Exam1Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
